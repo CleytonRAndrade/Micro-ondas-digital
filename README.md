@@ -6,16 +6,6 @@ Objetivo
   Simular o funcionamento de um micro-ondas digital permitindo:
   - Início manual (tempo e potência)
   - Programas pré-definidos
-  - Validações de regra de negócio
-  - Tratamento global de erros
-  - Teste unitários das camadas# Projeto Micro-ondas digital
-
-Desenvolvido em Java
-
-Objetivo 
-  Simular o funcionamento de um micro-ondas digital permitindo:
-  - Início manual (tempo e potência)
-  - Programas pré-definidos
   - Validações de regra de negócio:
     Regras atendidas
      ✔️Programas fixos
