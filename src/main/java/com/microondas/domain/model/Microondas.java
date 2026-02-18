@@ -9,23 +9,41 @@ public class Microondas {
     private boolean emExecucao;
     private boolean pausado;
 
+    private boolean programaPreDefinido;
+    private String caractereProcessamento = ".";
+
     public void iniciar(int tempo, Integer potencia) {
-        if (tempo < 1 || tempo > 120) {
-            throw new RegraNegocioException("Tempo deve estar entre 1 e 120 segundos.");
-        }
 
         if (potencia == null) {
             potencia = 10;
         }
 
-        if (potencia < 1 || potencia > 10) {
-            throw new RegraNegocioException("Potência deve estar entre 1 e 10.");
-        }
+        validarTempoPotencia(tempo, potencia);
 
         this.tempo = tempo;
         this.potencia = potencia;
         this.emExecucao = true;
         this.pausado = false;
+        this.caractereProcessamento = ".";
+        this.programaPreDefinido = false;
+    }
+
+    private void validarTempoPotencia(int tempo, Integer potencia) {
+
+        if (tempo < 1 || tempo > 120) {
+            throw new RegraNegocioException("Tempo deve estar entre 1 e 120 segundos.");
+        }
+
+        if (potencia < 1 || potencia > 10) {
+            throw new RegraNegocioException("Potência deve estar entre 1 e 10.");
+        }
+    }
+
+    public void iniciarPrograma(ProgramaAquecimento programa) {
+        this.tempo = programa.getTempo();
+        this.potencia = programa.getPotencia();
+        this.caractereProcessamento = programa.getCaractereAquecimento();
+        this.programaPreDefinido = true;
     }
 
     public void inicioRapido() {
@@ -35,6 +53,8 @@ public class Microondas {
     }
 
     public void adicionarTempo(int segundos) {
+        if (programaPreDefinido)
+            return;
         this.tempo += segundos;
     }
 
@@ -67,7 +87,7 @@ public class Microondas {
     }
 
     public String gerarProcessamento() {
-        return ".".repeat(potencia);
+        return caractereProcessamento.repeat(potencia);
     }
 
     public int getTempo() {

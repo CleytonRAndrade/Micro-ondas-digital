@@ -1,13 +1,30 @@
 package com.microondas.application.usecases;
 
+import java.util.List;
+
 import com.microondas.domain.model.Microondas;
+import com.microondas.domain.model.ProgramaAquecimento;
+import com.microondas.domain.repository.ProgramaRepository;
 
 public class MicroondasUseCase {
 
     private final Microondas microondas;
 
-    public MicroondasUseCase(Microondas microondas) {
+    private final ProgramaRepository repository;
+
+    public MicroondasUseCase(Microondas microondas, ProgramaRepository repository) {
         this.microondas = microondas;
+        this.repository = repository;
+    }
+
+    public void iniciarPrograma(String nomePrograma) {
+        var programa = repository.buscarPorNome(nomePrograma)
+                .orElseThrow(() -> new RuntimeException("Programa não encontrado"));
+        microondas.iniciarPrograma(programa);
+    }
+
+    public List<ProgramaAquecimento> listarProgramas() {
+        return repository.listarTodos();
     }
 
     public void iniciar(int tempo, Integer potencia) {

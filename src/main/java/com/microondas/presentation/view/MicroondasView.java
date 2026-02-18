@@ -27,7 +27,8 @@ public class MicroondasView {
     public MicroondasView() {
 
         controller = new MicroondasController(
-                new MicroondasUseCase(new Microondas()));
+                new MicroondasUseCase(new Microondas(),
+                        new com.microondas.infrastructure.repository.ProgramaRepositoryImpl()));
 
         Button iniciar = new Button("Iniciar");
         Button rapido = new Button("Início Rápido");
