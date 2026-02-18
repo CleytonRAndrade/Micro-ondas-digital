@@ -1,0 +1,7 @@
+com\microondas\presentation\dto\MicroondasInputDTO.class
+com\microondas\presentation\view\MicroondasView.class
+com\microondas\presentation\controller\MicroondasController.class
+com\microondas\application\usecases\MicroondasUseCase.class
+com\microondas\presentation\dto\MicroondasOutputDTO.class
+com\microondas\domain\exceptions\RegraNegocioException.class
+com\microondas\domain\model\Microondas.class
