@@ -10,4 +10,5 @@ public interface ProgramaRepository {
 
     Optional<ProgramaAquecimento> buscarPorNome(String nome);
 
+    void salvar(ProgramaAquecimento programa);
 }

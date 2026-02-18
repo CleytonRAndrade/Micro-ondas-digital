@@ -2,6 +2,8 @@ package com.microondas.domain.model;
 
 public class ProgramaAquecimento {
 
+    private final TipoPrograma tipo;
+
     private final String nome;
     private final String alimento;
     private final int tempo;
@@ -14,7 +16,8 @@ public class ProgramaAquecimento {
             int tempo,
             int potencia,
             String caractereAquecimento,
-            String instrucoes) {
+            String instrucoes,
+            TipoPrograma tipo) {
 
         this.nome = nome;
         this.alimento = alimento;
@@ -22,6 +25,7 @@ public class ProgramaAquecimento {
         this.potencia = potencia;
         this.caractereAquecimento = caractereAquecimento;
         this.instrucoes = instrucoes;
+        this.tipo = tipo;
     }
 
     public String getNome() {
@@ -46,5 +50,9 @@ public class ProgramaAquecimento {
 
     public String getInstrucoes() {
         return instrucoes;
+    }
+
+    public TipoPrograma getTipo() {
+        return tipo;
     }
 }
